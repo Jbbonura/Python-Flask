@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        {% for i in range(0,y) %}    
+            <tr>
+                {% for j in range(0,x) %} 
+                    {% if i%2==0 %}
+                        {% if j%2==0 %}
+                            <td class="box-light" style="background-color: {{color1}};">
+                                
+                            </td>
+                        {% else %}
+                            <td class="box-dark" style="background-color: {{color2}};"></td>
+                        {% endif %}
+                    {% else %}
+                        {% if j%2==0 %}
+                            <td class="box-dark" style="background-color: {{color2}};"></td>
+                        {% else %}
+                            <td class="box-light" style="background-color: {{color1}};"></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.box-light {
+    width: 100px;
+    height: 100px;
+}
+
+.box-dark {
+    width: 100px;
+    height: 100px;
+}
+
