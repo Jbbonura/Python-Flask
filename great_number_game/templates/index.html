@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Welcome to the great number game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    
+    {% if 'message' in session %}
+        {% if session['message'] == 'You guessed it!' %}
+            <div style="background-color: green; height: 50px; text-align: center;">
+                <h3 style="color: yellow; font-size: 35px;">{{session['message']}} It took you {{session['guesses']}} tries! The number was {{session['the_number']}}</h3>
+            </div> 
+        {% elif session['guesses'] == 5 %}
+            <div style="background-color: black; height: 50px; text-align: center;">
+                <h3 style="color: red; font-size: 35px;">You Lose!!!</h3>
+            </div>
+        {% else %}
+            <div style="background-color: red; height: 50px; text-align: center;">
+                <h3 style="color: yellow; font-size: 35px;">{{session['message']}}</h3>
+            </div>   
+        {% endif %}  
+    {% endif %}
+    {% if session['message'] != 'You guessed it!' and session['guesses']!= 5 %}
+        <form action="/guess" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            <input type="text" name="guess">
+            <input type="submit" value="submit">
+        </form>
+    {% elif session['guesses'] == 5 %}
+        <form action="/play_again" method="post" style="text-align: center;">
+            <input type="submit" value="Play again!">
+        </form>
+    {% else %}
+        <form action="/play_again" method="post" style="text-align: center;">
+            <input type="submit" value="Play again!">
+        </form>
+    {% endif %}
+
+
+    
+    
+</body>
+</html>
